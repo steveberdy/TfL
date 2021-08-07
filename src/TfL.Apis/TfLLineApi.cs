@@ -551,6 +551,7 @@ namespace TfL.Apis
         }
         #endregion
 
+
         #region Search
         public Task<TfLSearchResult> Search(string search, IEnumerable<string> modes = null, string serviceType = null, CancellationToken token = default)
         {
