@@ -14,9 +14,9 @@ namespace TfL.Apis
             _client = client;
         }
 
-        protected Task<TResult> GetAsync<TResult>(string uriPath, Dictionary<string, object> query, CancellationToken token = default)
+        protected Task<TResult> GetAsync<TResult>(string uriPath, Dictionary<string, object> query, CancellationToken cancellationToken = default)
         {
-            return _client.GetAsync<TResult>($"{UriPart}/{uriPath}", query, token);
+            return _client.GetAsync<TResult>($"{UriPart}/{uriPath}", query, cancellationToken);
         }
     }
 }

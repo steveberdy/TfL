@@ -15,9 +15,9 @@ namespace TfL.Apis
         internal TfLJourneyApi(TfLClient client) : base(client) { }
 
 
-        public Task<TfLMode[]> GetJourneyPlannerModes(CancellationToken token = default)
+        public Task<TfLMode[]> GetJourneyPlannerModes(CancellationToken cancellationToken = default)
         {
-            return GetAsync<TfLMode[]>("Meta/Modes", null, token);
+            return GetAsync<TfLMode[]>("Meta/Modes", null, cancellationToken);
         }
 
         #region JourneySearch

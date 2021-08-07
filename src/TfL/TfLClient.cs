@@ -85,7 +85,7 @@ namespace TfL
             this.appKey = appKey;
         }
 
-        internal async Task<TResult> GetAsync<TResult>(string uriPath, Dictionary<string, object> query, CancellationToken token = default)
+        internal async Task<TResult> GetAsync<TResult>(string uriPath, Dictionary<string, object> query, CancellationToken cancellationToken = default)
         {
             if (HasAppKey)
             {
@@ -97,12 +97,12 @@ namespace TfL
             }
             uriPath += Utils.CreateQuery(query);
 
-            var response = await client.GetAsync(uriPath, HttpCompletionOption.ResponseContentRead, token).ConfigureAwait(false);
+            var response = await client.GetAsync(uriPath, HttpCompletionOption.ResponseContentRead, cancellationToken).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {
                 using var jtr = new JsonTextReader(
-                    new StreamReader(await response.Content.ReadAsStreamAsync(token).ConfigureAwait(false)))
+                    new StreamReader(await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false)))
                 { CloseInput = true };
                 return serializer.Deserialize<TResult>(jtr);
             }

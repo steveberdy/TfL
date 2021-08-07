@@ -14,9 +14,9 @@ namespace TfL.Apis
         internal TfLAccidentStatsApi(TfLClient client) : base(client) { }
 
 
-        public Task<TfLAccidentStats[]> GetAccidents(int year, CancellationToken token = default)
+        public Task<TfLAccidentStats[]> GetAccidents(int year, CancellationToken cancellationToken = default)
         {
-            return GetAsync<TfLAccidentStats[]>($"{year}", null, token);
+            return GetAsync<TfLAccidentStats[]>($"{year}", null, cancellationToken);
         }
     }
 }

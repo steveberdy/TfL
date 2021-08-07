@@ -14,9 +14,9 @@ namespace TfL.Apis
         internal TfLAirQualityApi(TfLClient client) : base(client) { }
 
 
-        public Task<TfLAirQuality> GetAirQuality(CancellationToken token = default)
+        public Task<TfLAirQuality> GetAirQuality(CancellationToken cancellationToken = default)
         {
-            return GetAsync<TfLAirQuality>("", null, token);
+            return GetAsync<TfLAirQuality>("", null, cancellationToken);
         }
     }
 }

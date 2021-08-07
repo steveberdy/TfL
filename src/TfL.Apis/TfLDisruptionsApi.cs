@@ -14,9 +14,9 @@ namespace TfL.Apis
         internal TfLDisruptionsApi(TfLClient client) : base(client) { }
 
 
-        public Task<TfLLiftDisruption[]> GetDisruptions(CancellationToken token = default)
+        public Task<TfLLiftDisruption[]> GetDisruptions(CancellationToken cancellationToken = default)
         {
-            return GetAsync<TfLLiftDisruption[]>("Lifts", null, token);
+            return GetAsync<TfLLiftDisruption[]>("Lifts", null, cancellationToken);
         }
     }
 }

@@ -21,10 +21,10 @@ namespace TfL.Apis
         /// <returns>
         /// An array of all bike points
         /// </returns>
-        /// <param name="token">Cancellation token, optional</param>
-        public Task<TfLBikePointPlace[]> GetAll(CancellationToken token = default)
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        public Task<TfLBikePointPlace[]> GetAll(CancellationToken cancellationToken = default)
         {
-            return GetAsync<TfLBikePointPlace[]>("", null, token);
+            return GetAsync<TfLBikePointPlace[]>("", null, cancellationToken);
         }
 
         /// <summary>
@@ -34,16 +34,16 @@ namespace TfL.Apis
         /// A bike point with the given id
         /// </returns>
         /// <param name="bikePointId">A bike point id</param>
-        /// <param name="token">Cancellation token, optional</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">bikePointId is null or empty</exception>
-        public Task<TfLBikePointPlace> Get(string bikePointId, CancellationToken token = default)
+        public Task<TfLBikePointPlace> Get(string bikePointId, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(bikePointId))
             {
                 throw new ArgumentNullException(nameof(bikePointId));
             }
 
-            return GetAsync<TfLBikePointPlace>(bikePointId, null, token);
+            return GetAsync<TfLBikePointPlace>(bikePointId, null, cancellationToken);
         }
 
         /// <summary>
@@ -56,9 +56,9 @@ namespace TfL.Apis
         /// An array of matching bike points
         /// </returns>
         /// <param name="search">Search query</param>
-        /// <param name="token">Cancellation token, optional</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">search is null or empty</exception>
-        public Task<TfLBikePointPlace[]> Search(string search, CancellationToken token = default)
+        public Task<TfLBikePointPlace[]> Search(string search, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(search))
             {
@@ -70,7 +70,7 @@ namespace TfL.Apis
                 { "query", search }
             };
 
-            return GetAsync<TfLBikePointPlace[]>("Search", query, token);
+            return GetAsync<TfLBikePointPlace[]>("Search", query, cancellationToken);
         }
     }
 }

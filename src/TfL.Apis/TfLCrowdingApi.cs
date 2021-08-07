@@ -25,7 +25,8 @@ namespace TfL.Apis
 
 
         #region GetDayOfWeekCrowding
-        public Task<object> GetDayOfWeekCrowding(string naptanCode, DayOfWeek dayOfWeek, CancellationToken token = default)
+        
+        public Task<object> GetDayOfWeekCrowding(string naptanCode, DayOfWeek dayOfWeek, CancellationToken cancellationToken = default)
         {
             CheckAuthorization();
 
@@ -35,23 +36,24 @@ namespace TfL.Apis
             }
 
             var path = naptanCode + "/" + dayOfWeek.ToString();
-            return GetAsync<object>(path, null, token);
+            return GetAsync<object>(path, null, cancellationToken);
         }
 
-        public Task<object> GetDayOfWeekCrowding(string naptanCode, string dayOfWeek, CancellationToken token = default)
+        public Task<object> GetDayOfWeekCrowding(string naptanCode, string dayOfWeek, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(dayOfWeek, true, out DayOfWeek day))
             {
-                return GetDayOfWeekCrowding(naptanCode, day, token);
+                return GetDayOfWeekCrowding(naptanCode, day, cancellationToken);
             }
 
             throw new ArgumentException($"{nameof(dayOfWeek)} must be a valid day of the week.");
         }
-        #endregion
 
+        #endregion
 
         #region GetLiveCrowding
-        public Task<object> GetLiveCrowding(string naptanCode, CancellationToken token = default)
+        
+        public Task<object> GetLiveCrowding(string naptanCode, CancellationToken cancellationToken = default)
         {
             CheckAuthorization();
 
@@ -60,13 +62,14 @@ namespace TfL.Apis
                 throw new ArgumentNullException(nameof(naptanCode));
             }
 
-            return GetAsync<object>($"{naptanCode}/Live", null, token);
+            return GetAsync<object>($"{naptanCode}/Live", null, cancellationToken);
         }
+
         #endregion
 
-
         #region GetCrowding
-        public Task<object> GetCrowding(string naptanCode, CancellationToken token = default)
+
+        public Task<object> GetCrowding(string naptanCode, CancellationToken cancellationToken = default)
         {
             CheckAuthorization();
 
@@ -75,8 +78,9 @@ namespace TfL.Apis
                 throw new ArgumentNullException(nameof(naptanCode));
             }
 
-            return GetAsync<object>(naptanCode, null, token);
+            return GetAsync<object>(naptanCode, null, cancellationToken);
         }
+
         #endregion
     }
 }
