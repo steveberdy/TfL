@@ -19,6 +19,15 @@ namespace TfL.Apis
 
         #region GetAllRoutes
 
+        /// <summary>
+        /// Get all valid routes for all lines.
+        /// Uses a serviceType string, which may be Regular, Night, or
+        /// both (Regular,Night)
+        /// </summary>
+        /// <returns>An array of routes</returns>
+        /// <param name="serviceType">Service type string</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentException">serviceType must be a valid service type</exception>
         public Task<TfLRoutes[]> GetAllRoutes(string serviceType, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(serviceType, true, out TfLServiceTypeEnum serviceTypeEnum))
@@ -29,6 +38,12 @@ namespace TfL.Apis
             throw new ArgumentException($"{nameof(serviceType)} must be a valid service type.");
         }
 
+        /// <summary>
+        /// Get all valid routes for all lines
+        /// </summary>
+        /// <returns>An array of routes</returns>
+        /// <param name="serviceType">Service type enum</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
         public Task<TfLRoutes[]> GetAllRoutes(TfLServiceTypeEnum serviceType = default, CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
@@ -43,6 +58,16 @@ namespace TfL.Apis
 
         #region GetRoutes
 
+        /// <summary>
+        /// Get all valid routes for the given line id.
+        /// Uses a serviceType string, which may be Regular, Night, or
+        /// both (Regular,Night)
+        /// </summary>
+        /// <returns>An array of routes</returns>
+        /// <param name="lineId">Line id</param>
+        /// <param name="serviceType">Service type string</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentException">serviceType must be a valid service type</exception>
         public Task<TfLRoutes[]> GetRoutes(string lineId, string serviceType, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(serviceType, true, out TfLServiceTypeEnum serviceTypeEnum))
@@ -53,6 +78,14 @@ namespace TfL.Apis
             throw new ArgumentException($"{nameof(serviceType)} must be a valid service type.");
         }
 
+        /// <summary>
+        /// Get all valid routes for the given line id
+        /// </summary>
+        /// <returns>An array of routes</returns>
+        /// <param name="lineId">Line id</param>
+        /// <param name="serviceType">Service type enum</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentNullException">lineId cannot be null or empty</exception>
         public Task<TfLRoutes[]> GetRoutes(string lineId, TfLServiceTypeEnum serviceType = default, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
@@ -63,6 +96,16 @@ namespace TfL.Apis
             return GetRoutes(new[] { lineId }, serviceType, cancellationToken);
         }
 
+        /// <summary>
+        /// Get all valid routes for the given line ids.
+        /// Uses a serviceType string, which may be Regular, Night, or
+        /// both (Regular,Night)
+        /// </summary>
+        /// <returns>An array of routes</returns>
+        /// <param name="lineIds">Line id enumerable</param>
+        /// <param name="serviceType">Service type string</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentException">serviceType must be a valid service type</exception>
         public Task<TfLRoutes[]> GetRoutes(IEnumerable<string> lineIds, string serviceType, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(serviceType, true, out TfLServiceTypeEnum serviceTypeEnum))
@@ -73,6 +116,14 @@ namespace TfL.Apis
             throw new ArgumentException($"{nameof(serviceType)} must be a valid service type.");
         }
 
+        /// <summary>
+        /// Get all valid routes for the given line ids
+        /// </summary>
+        /// <returns>An array of routes</returns>
+        /// <param name="lineIds">Line id enumerable</param>
+        /// <param name="serviceType">Service type enum</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentNullException">lineIds cannot be null or empty or contain null or empty line ids</exception>
         public Task<TfLRoutes[]> GetRoutes(IEnumerable<string> lineIds, TfLServiceTypeEnum serviceType = default, CancellationToken cancellationToken = default)
         {
             if (!lineIds.Any() || lineIds.Contains(null) || lineIds.Contains(string.Empty))
@@ -93,6 +144,13 @@ namespace TfL.Apis
 
         #region GetMainRoute
 
+        /// <summary>
+        /// Gets the main route for the given line id
+        /// </summary>
+        /// <returns>The main route for the line</returns>
+        /// <param name="lineId">Line id</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentNullException">lineId cannot be null or empty</exception>
         public Task<TfLRoutes> GetMainRoute(string lineId, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
@@ -107,6 +165,14 @@ namespace TfL.Apis
 
         #region GetAllDisruptions
 
+        /// <summary>
+        /// Gets all disruptions for the given mode of transportation.
+        /// Use 'GetValidModes' for a list of modes that are usable
+        /// </summary>
+        /// <returns>An array of disruptions for the mode of transportation</returns>
+        /// <param name="mode">Mode of transporation</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentNullException">mode cannot be null or empty</exception>
         public Task<TfLDisruption[]> GetAllDisruptions(string mode, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(mode))
@@ -117,6 +183,14 @@ namespace TfL.Apis
             return GetAllDisruptions(new[] { mode }, cancellationToken);
         }
 
+        /// <summary>
+        /// Gets all disruptions for the given modes of transportation.
+        /// Use 'GetValidModes' for a list of modes that are usable
+        /// </summary>
+        /// <returns>An array of disruptions for the mode of transportation</returns>
+        /// <param name="modes">Enumerable for modes of transporation</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentNullException">modes cannot be null or empty or contain null or empty modes</exception>
         public Task<TfLDisruption[]> GetAllDisruptions(IEnumerable<string> modes, CancellationToken cancellationToken = default)
         {
             if (!modes.Any() || modes.Contains(null) || modes.Contains(string.Empty))
@@ -132,6 +206,13 @@ namespace TfL.Apis
 
         #region GetDisruptions
 
+        /// <summary>
+        /// Gets all disruptions for the given line
+        /// </summary>
+        /// <returns>An array of disruptions for the line provided</returns>
+        /// <param name="lineId">Line id</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentNullException">lineId cannot be null or empty</exception>
         public Task<TfLDisruption[]> GetDisruptions(string lineId, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
@@ -142,6 +223,13 @@ namespace TfL.Apis
             return GetDisruptions(new[] { lineId }, cancellationToken);
         }
 
+        /// <summary>
+        /// Gets all disruptions for the given lines
+        /// </summary>
+        /// <returns>An array of disruptions for the lines provided</returns>
+        /// <param name="lineIds">Line id enumerable</param>
+        /// <param name="cancellationToken">Cancellation token, optional</param>
+        /// <exception cref="ArgumentNullException">lineIds cannot be null or empty or contain null or empty line ids</exception>
         public Task<TfLDisruption[]> GetDisruptions(IEnumerable<string> lineIds, CancellationToken cancellationToken = default)
         {
             if (!lineIds.Any() || lineIds.Contains(null) || lineIds.Contains(string.Empty))
