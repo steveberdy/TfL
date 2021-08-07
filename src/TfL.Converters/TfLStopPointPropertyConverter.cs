@@ -21,13 +21,9 @@ namespace TfL.Converters
                 {
                     var chunk = a.FirstOrDefault(x => x[0].Key == b.Key);
                     if (chunk != null)
-                    {
                         chunk.Add(b);
-                    }
                     else
-                    {
                         a.Add(new List<TfLStopPointProperty> { b });
-                    }
                     return a;
                 })
                 .ToDictionary(x => x[0].Key, x => x.Select(x => x.Value).ToArray());
