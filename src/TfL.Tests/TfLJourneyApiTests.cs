@@ -1,9 +1,11 @@
 using Xunit;
 
-namespace TfLTests
+namespace TfL.Tests
 {
-    public class TfLJourneyApiTests : TfLApiTestBase
+    public class TfLJourneyApiTests
     {
+        private readonly TfLClient client = new();
+
         [Fact]
         public async void Test_GetJourneyPlannerModes()
         {

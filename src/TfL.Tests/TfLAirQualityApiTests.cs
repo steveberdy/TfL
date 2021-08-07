@@ -1,9 +1,11 @@
 using Xunit;
 
-namespace TfLTests
+namespace TfL.Tests
 {
-    public class TfLAirQualityApiTests : TfLApiTestBase
+    public class TfLAirQualityApiTests
     {
+        private readonly TfLClient client = new();
+
         [Fact]
         public async void Test_GetAirQuality()
         {

@@ -1,9 +1,11 @@
 using Xunit;
 
-namespace TfLTests
+namespace TfL.Tests
 {
-    public class TfLAccidentStatsApiTests : TfLApiTestBase
+    public class TfLAccidentStatsApiTests
     {
+        private readonly TfLClient client = new();
+
         [Fact]
         public async void Test_GetAccidents_Success()
         {

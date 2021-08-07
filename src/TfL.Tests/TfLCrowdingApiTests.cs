@@ -1,11 +1,12 @@
 using System;
 using Xunit;
-using TfL;
 
-namespace TfLTests
+namespace TfL.Tests
 {
-    public class TfLCrowdingApiTests : TfLApiTestBase
+    public class TfLCrowdingApiTests
     {
+        private TfLClient client = new();
+
         #region Test_GetDayOfWeekCrowding
         // [Fact]
         // public async void Test_GetDayOfWeekCrowding_Success()

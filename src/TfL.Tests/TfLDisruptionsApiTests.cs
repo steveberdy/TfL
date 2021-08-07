@@ -1,9 +1,11 @@
 using Xunit;
 
-namespace TfLTests
+namespace TfL.Tests
 {
-    public class TfLDisruptionsApiTests : TfLApiTestBase
+    public class TfLDisruptionsApiTests
     {
+        private readonly TfLClient client = new();
+
         [Fact]
         public async void Test_GetDisruptions()
         {

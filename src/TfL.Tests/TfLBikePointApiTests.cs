@@ -1,10 +1,12 @@
 using System;
 using Xunit;
 
-namespace TfLTests
+namespace TfL.Tests
 {
-    public class TfLBikePointApiTests : TfLApiTestBase
+    public class TfLBikePointApiTests
     {
+        private readonly TfLClient client = new();
+
         [Fact]
         public async void Test_GetAll()
         {
