@@ -2,7 +2,7 @@
 
 This is a .NET wrapper for the Transport for London API.
 
-All APIS covered except for Journey API.
+All APIs covered except for Journey API.
 
 ## Building and Testing
 
