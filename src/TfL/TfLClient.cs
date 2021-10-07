@@ -47,10 +47,6 @@ namespace TfL
         /// Lift Disruptions API
         /// </summary>
         public TfLDisruptionsApi Disruptions;
-        /// <summary>
-        /// Journey Planning API
-        /// </summary>
-        public TfLJourneyApi Journey;
 
 
         /// <summary>
@@ -66,7 +62,6 @@ namespace TfL
             BikePoint = new TfLBikePointApi(this);
             Crowding = new TfLCrowdingApi(this);
             Disruptions = new TfLDisruptionsApi(this);
-            Journey = new TfLJourneyApi(this);
 
             client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }, true);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

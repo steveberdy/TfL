@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TfL.csproj" />
+    <ProjectReference Include="..\TfL\TfL.csproj" />
   </ItemGroup>
 
 </Project>
