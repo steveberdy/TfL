@@ -25,10 +25,10 @@ namespace TfL.Converters
             {
                 TerminalName = array[0].Value,
                 Installed = bool.Parse(array[1].Value),
-                Locked = bool.TryParse(array[2].Value, out bool b2) ? b2 : null,
+                Locked = bool.Parse(array[2].Value),
                 InstallDate = Utils.FromUnixTimestampStringMs(array[3].Value),
                 RemovalDate = Utils.FromUnixTimestampStringMs(array[4].Value),
-                Temporary = bool.TryParse(array[5].Value, out bool b5) ? b5: null,
+                Temporary = bool.Parse(array[5].Value),
                 Bikes = int.Parse(array[6].Value),
                 EmptyDocks = int.Parse(array[7].Value),
                 TotalDocks = int.Parse(array[8].Value),
