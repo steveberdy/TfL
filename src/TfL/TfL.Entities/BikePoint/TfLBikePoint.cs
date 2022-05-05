@@ -10,13 +10,13 @@ namespace TfL.Entities
         [JsonProperty("installed")]
         public bool Installed { get; set; }
         [JsonProperty("locked")]
-        public bool Locked { get; set; }
+        public bool? Locked { get; set; }
         [JsonProperty("installDate")]
         public DateTime InstallDate { get; set; }
         [JsonProperty("removalDate")]
         public DateTime RemovalDate { get; set; }
         [JsonProperty("temporary")]
-        public bool Temporary { get; set; }
+        public bool? Temporary { get; set; }
         [JsonProperty("bikes")]
         public int Bikes { get; set; }
         [JsonProperty("emptyDocks")]
