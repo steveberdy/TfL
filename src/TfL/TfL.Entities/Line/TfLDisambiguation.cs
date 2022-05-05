@@ -7,7 +7,6 @@ namespace TfL.Entities
     /// </summary>
     public class TfLDisambiguation
     {
-        [JsonProperty("disambiguationOptions")]
-        public TfLDisambiguationOption[] DisambiguationOptions { get; set; }
+        [JsonProperty("disambiguationOptions")] public TfLDisambiguationOption[] DisambiguationOptions { get; set; }
     }
 }

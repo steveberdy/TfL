@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLInterval
     {
-        [JsonProperty("stopId")]
-        public string StopId { get; set; }
-        [JsonProperty("timeToArrival")]
-        public double TimeToArrival { get; set; }
+        [JsonProperty("stopId")] public string StopId { get; set; }
+        [JsonProperty("timeToArrival")] public double TimeToArrival { get; set; }
     }
 }

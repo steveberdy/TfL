@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLPassengerFlow
     {
-        [JsonProperty("timeSlice")]
-        public string TimeSlice { get; set; }
-        [JsonProperty("value")]
-        public int Value { get; set; }
+        [JsonProperty("timeSlice")] public string TimeSlice { get; set; }
+        [JsonProperty("value")] public int Value { get; set; }
     }
 }

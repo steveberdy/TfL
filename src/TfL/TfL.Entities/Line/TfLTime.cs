@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLTime
     {
-        [JsonProperty("hour")]
-        public string Hour { get; set; }
-        [JsonProperty("minute")]
-        public string Minute { get; set; }
+        [JsonProperty("hour")] public string Hour { get; set; }
+        [JsonProperty("minute")] public string Minute { get; set; }
     }
 }

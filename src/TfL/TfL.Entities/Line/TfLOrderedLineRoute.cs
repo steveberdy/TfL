@@ -7,11 +7,8 @@ namespace TfL.Entities
     /// </summary>
     public class TfLOrderedLineRoute
     {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-        [JsonProperty("naptanIds")]
-        public string[] NaptanIds { get; set; }
-        [JsonProperty("serviceType")]
-        public TfLServiceTypeEnum ServiceType { get; set; }
+        [JsonProperty("name")] public string Name { get; set; }
+        [JsonProperty("naptanIds")] public string[] NaptanIds { get; set; }
+        [JsonProperty("serviceType")] public TfLServiceTypeEnum ServiceType { get; set; }
     }
 }

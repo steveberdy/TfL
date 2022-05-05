@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLLineModeGroup
     {
-        [JsonProperty("modeName")]
-        public string ModeName { get; set; }
-        [JsonProperty("lineIdentifier")]
-        public string[] LineIdentifier { get; set; }
+        [JsonProperty("modeName")] public string ModeName { get; set; }
+        [JsonProperty("lineIdentifier")] public string[] LineIdentifier { get; set; }
     }
 }

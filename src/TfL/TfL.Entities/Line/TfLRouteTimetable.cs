@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLRouteTimetable
     {
-        [JsonProperty("stationIntervals")]
-        public TfLStationInterval[] StationIntervals { get; set; }
-        [JsonProperty("schedules")]
-        public TfLSchedule[] Schedules { get; set; }
+        [JsonProperty("stationIntervals")] public TfLStationInterval[] StationIntervals { get; set; }
+        [JsonProperty("schedules")] public TfLSchedule[] Schedules { get; set; }
     }
 }

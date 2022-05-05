@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLTimetable
     {
-        [JsonProperty("departureStopId")]
-        public string DepartureStopId { get; set; }
-        [JsonProperty("routes")]
-        public TfLRouteTimetable[] Routes { get; set; }
+        [JsonProperty("departureStopId")] public string DepartureStopId { get; set; }
+        [JsonProperty("routes")] public TfLRouteTimetable[] Routes { get; set; }
     }
 }

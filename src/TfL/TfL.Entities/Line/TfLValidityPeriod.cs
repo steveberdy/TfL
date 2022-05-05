@@ -9,11 +9,8 @@ namespace TfL.Entities
     /// </summary>
     public class TfLValidityPeriod
     {
-        [JsonProperty("fromDate")]
-        public DateTime FromDate { get; set; }
-        [JsonProperty("toDate")]
-        public DateTime ToDate { get; set; }
-        [JsonProperty("isNow")]
-        public bool IsNow { get; set; }
+        [JsonProperty("fromDate")] public DateTime FromDate { get; set; }
+        [JsonProperty("toDate")] public DateTime ToDate { get; set; }
+        [JsonProperty("isNow")] public bool IsNow { get; set; }
     }
 }

@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLFrequency
     {
-        [JsonProperty("lowestFrequency")]
-        public double LowestFrequency { get; set; }
-        [JsonProperty("highestFrequency")]
-        public double HighestFrequency { get; set; }
+        [JsonProperty("lowestFrequency")] public double LowestFrequency { get; set; }
+        [JsonProperty("highestFrequency")] public double HighestFrequency { get; set; }
     }
 }

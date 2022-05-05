@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLCrowding
     {
-        [JsonProperty("passengerFlows")]
-        public TfLPassengerFlow[] PassengerFlows { get; set; }
-        [JsonProperty("trainLoadings")]
-        public TfLTrainLoading[] TrainLoadings { get; set; }
+        [JsonProperty("passengerFlows")] public TfLPassengerFlow[] PassengerFlows { get; set; }
+        [JsonProperty("trainLoadings")] public TfLTrainLoading[] TrainLoadings { get; set; }
     }
 }

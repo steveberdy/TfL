@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLRouteSectionNaptanEntry
     {
-        [JsonProperty("ordinal")]
-        public int Ordinal { get; set; }
-        [JsonProperty("stopPoint")]
-        public TfLStopPoint StopPoint { get; set; }
+        [JsonProperty("ordinal")] public int Ordinal { get; set; }
+        [JsonProperty("stopPoint")] public TfLStopPoint StopPoint { get; set; }
     }
 }

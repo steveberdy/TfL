@@ -7,7 +7,6 @@ namespace TfL.Entities
     /// </summary>
     public class TfLRouteSectionId
     {
-        [JsonProperty("id")]
-        public int Id { get; set; }
+        [JsonProperty("id")] public int Id { get; set; }
     }
 }

@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLSearchResult
     {
-        [JsonProperty("input")]
-        public string Input { get; set; }
-        [JsonProperty("SearchMatches")]
-        public TfLSearchMatch[] SearchMatches { get; set; }
+        [JsonProperty("input")] public string Input { get; set; }
+        [JsonProperty("SearchMatches")] public TfLSearchMatch[] SearchMatches { get; set; }
     }
 }

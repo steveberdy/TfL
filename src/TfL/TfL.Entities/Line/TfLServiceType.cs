@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLServiceType
     {
-        [JsonProperty("name")]
-        public TfLServiceTypeEnum Name { get; set; }
-        [JsonProperty("uri")]
-        public string Uri { get; set; }
+        [JsonProperty("name")] public TfLServiceTypeEnum Name { get; set; }
+        [JsonProperty("uri")] public string Uri { get; set; }
     }
 }

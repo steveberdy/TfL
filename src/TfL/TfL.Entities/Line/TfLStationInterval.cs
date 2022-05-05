@@ -7,9 +7,7 @@ namespace TfL.Entities
     /// </summary>
     public class TfLStationInterval
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-        [JsonProperty("intervals")]
-        public TfLInterval[] Intervals { get; set; }
+        [JsonProperty("id")] public string Id { get; set; }
+        [JsonProperty("intervals")] public TfLInterval[] Intervals { get; set; }
     }
 }

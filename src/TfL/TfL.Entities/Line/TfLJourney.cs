@@ -7,11 +7,8 @@ namespace TfL.Entities
     /// </summary>
     public class TfLJourney
     {
-        [JsonProperty("hour")]
-        public string Hour { get; set; }
-        [JsonProperty("minute")]
-        public string Minute { get; set; }
-        [JsonProperty("intervalId")]
-        public int IntervalId { get; set; }
+        [JsonProperty("hour")] public string Hour { get; set; }
+        [JsonProperty("minute")] public string Minute { get; set; }
+        [JsonProperty("intervalId")] public int IntervalId { get; set; }
     }
 }
