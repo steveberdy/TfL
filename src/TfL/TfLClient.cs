@@ -19,9 +19,6 @@ namespace TfL
         private static readonly string baseUrl = "https://api.tfl.gov.uk/";
         private readonly HttpClient client;
         private readonly JsonSerializer serializer;
-        private readonly string appKey = null;
-
-        internal bool HasAppKey => appKey != null;
 
         /// <summary>
         /// Line API
@@ -40,10 +37,6 @@ namespace TfL
         /// </summary>
         public TfLBikePointApi BikePoint;
         /// <summary>
-        /// Crowding API. Requires an app key
-        /// </summary>
-        public TfLCrowdingApi Crowding;
-        /// <summary>
         /// Lift Disruptions API
         /// </summary>
         public TfLDisruptionsApi Disruptions;
@@ -51,8 +44,6 @@ namespace TfL
 
         /// <summary>
         /// Creates a new <see cref="TfLClient"/>.
-        /// This client, without an app key, does not have access
-        /// to the <see cref="Crowding"/> API
         /// </summary>
         public TfLClient()
         {
@@ -60,7 +51,6 @@ namespace TfL
             AccidentStats = new TfLAccidentStatsApi(this);
             AirQuality = new TfLAirQualityApi(this);
             BikePoint = new TfLBikePointApi(this);
-            Crowding = new TfLCrowdingApi(this);
             Disruptions = new TfLDisruptionsApi(this);
 
             client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }, true);
@@ -69,27 +59,8 @@ namespace TfL
             serializer = new JsonSerializer();
         }
 
-        /// <summary>
-        /// Creates a new <see cref="TfLClient"/> with authorization.
-        /// Sign up to get an optional app key: https://api-portal.tfl.gov.uk/signup
-        /// This allows you to use extra APIs such as the <see cref="Crowding"/> API
-        /// </summary>
-        /// <param name="appKey">The app key associated with your app</param>
-        public TfLClient(string appKey) : this()
-        {
-            this.appKey = appKey;
-        }
-
         internal async Task<TResult> GetAsync<TResult>(string uriPath, Dictionary<string, object> query, CancellationToken cancellationToken = default)
         {
-            if (HasAppKey)
-            {
-                if (query == null)
-                {
-                    query = new Dictionary<string, object>();
-                }
-                query.Add("app_id", appKey);
-            }
             uriPath += Utils.CreateQuery(query);
 
             var response = await client.GetAsync(uriPath, HttpCompletionOption.ResponseContentRead, cancellationToken).ConfigureAwait(false);

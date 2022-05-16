@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <PackageId>TfLApi</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Authors>Steve Berdy</Authors>
     <Description>A C# .NET wrapper for the Transport for London API</Description>
     <PackageProjectUrl>https://github.com/steveberdy/TfL</PackageProjectUrl>
