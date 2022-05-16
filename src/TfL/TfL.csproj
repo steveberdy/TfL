@@ -11,6 +11,7 @@
     <Version>1.0.0</Version>
     <Authors>Steve Berdy</Authors>
     <Company>Transport for London</Company>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
