@@ -12,7 +12,7 @@ using TfL;
 using TfL.Entities;
 
 TfLClient client = new();
-TfLRoutes[] lines = await client.Line.GetLinesByMode("tube");
+TfLRoutes[] lines = await client.Line.GetLinesByModeAsync("tube");
 
 // List all lines on the Underground
 foreach (TfLRoutes line in lines)

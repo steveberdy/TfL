@@ -9,7 +9,7 @@ namespace TfL.Tests
         [Fact]
         public async void Test_GetAccidents_Success()
         {
-            var res = await client.AccidentStats.GetAccidents(2019);
+            var res = await client.AccidentStats.GetAccidentsAsync(2019);
             Assert.NotNull(res);
             Assert.True(res.Length > 0);
         }
@@ -18,7 +18,7 @@ namespace TfL.Tests
         public async void Test_GetAccidents_Success_No_Data()
         {
             // 2020 has no data
-            var res = await client.AccidentStats.GetAccidents(2020);
+            var res = await client.AccidentStats.GetAccidentsAsync(2020);
             Assert.Null(res);
         }
     }

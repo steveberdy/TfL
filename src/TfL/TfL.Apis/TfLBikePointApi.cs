@@ -22,7 +22,7 @@ namespace TfL.Apis
         /// An array of all bike points
         /// </returns>
         /// <param name="cancellationToken">Cancellation token, optional</param>
-        public Task<TfLBikePointPlace[]> GetAll(CancellationToken cancellationToken = default)
+        public Task<TfLBikePointPlace[]> GetAllAsync(CancellationToken cancellationToken = default)
         {
             return GetAsync<TfLBikePointPlace[]>("", null, cancellationToken);
         }
@@ -36,7 +36,7 @@ namespace TfL.Apis
         /// <param name="bikePointId">A bike point id</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">bikePointId is null or empty</exception>
-        public Task<TfLBikePointPlace> Get(string bikePointId, CancellationToken cancellationToken = default)
+        public Task<TfLBikePointPlace> GetAsync(string bikePointId, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(bikePointId))
             {
@@ -49,7 +49,7 @@ namespace TfL.Apis
         /// <summary>
         /// Searches for bike points by name.
         /// Note that information only includes place information,
-        /// not stats about the bike point. Use <see cref="Get"/> to get
+        /// not stats about the bike point. Use <see cref="GetAsync"/> to get
         /// such information.
         /// </summary>
         /// <returns>
@@ -58,7 +58,7 @@ namespace TfL.Apis
         /// <param name="search">Search query</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">search is null or empty</exception>
-        public Task<TfLBikePointPlace[]> Search(string search, CancellationToken cancellationToken = default)
+        public Task<TfLBikePointPlace[]> SearchAsync(string search, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(search))
             {

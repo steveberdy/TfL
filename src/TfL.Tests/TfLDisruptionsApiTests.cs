@@ -9,7 +9,7 @@ namespace TfL.Tests
         [Fact]
         public async void Test_GetDisruptions()
         {
-            var res = await client.Disruptions.GetDisruptions();
+            var res = await client.Disruptions.GetDisruptionsAsync();
             Assert.NotNull(res);
             Assert.True(res.Length > 0);
         }

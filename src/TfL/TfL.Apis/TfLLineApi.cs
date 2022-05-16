@@ -28,11 +28,11 @@ namespace TfL.Apis
         /// <param name="serviceType">Service type string</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentException">serviceType must be a valid service type</exception>
-        public Task<TfLRoutes[]> GetAllRoutes(string serviceType, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetAllRoutesAsync(string serviceType, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(serviceType, true, out TfLServiceTypeEnum serviceTypeEnum))
             {
-                return GetAllRoutes(serviceTypeEnum, cancellationToken);
+                return GetAllRoutesAsync(serviceTypeEnum, cancellationToken);
             }
 
             throw new ArgumentException($"{nameof(serviceType)} must be a valid service type.");
@@ -44,7 +44,7 @@ namespace TfL.Apis
         /// <returns>An array of routes</returns>
         /// <param name="serviceType">Service type enum</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
-        public Task<TfLRoutes[]> GetAllRoutes(TfLServiceTypeEnum serviceType = default, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetAllRoutesAsync(TfLServiceTypeEnum serviceType = default, CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {
@@ -68,11 +68,11 @@ namespace TfL.Apis
         /// <param name="serviceType">Service type string</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentException">serviceType must be a valid service type</exception>
-        public Task<TfLRoutes[]> GetRoutes(string lineId, string serviceType, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetRoutesAsync(string lineId, string serviceType, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(serviceType, true, out TfLServiceTypeEnum serviceTypeEnum))
             {
-                return GetRoutes(lineId, serviceTypeEnum, cancellationToken);
+                return GetRoutesAsync(lineId, serviceTypeEnum, cancellationToken);
             }
 
             throw new ArgumentException($"{nameof(serviceType)} must be a valid service type.");
@@ -86,14 +86,14 @@ namespace TfL.Apis
         /// <param name="serviceType">Service type enum</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">lineId cannot be null or empty</exception>
-        public Task<TfLRoutes[]> GetRoutes(string lineId, TfLServiceTypeEnum serviceType = default, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetRoutesAsync(string lineId, TfLServiceTypeEnum serviceType = default, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
             {
                 throw new ArgumentNullException(nameof(lineId));
             }
 
-            return GetRoutes(new[] { lineId }, serviceType, cancellationToken);
+            return GetRoutesAsync(new[] { lineId }, serviceType, cancellationToken);
         }
 
         /// <summary>
@@ -106,11 +106,11 @@ namespace TfL.Apis
         /// <param name="serviceType">Service type string</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentException">serviceType must be a valid service type</exception>
-        public Task<TfLRoutes[]> GetRoutes(IEnumerable<string> lineIds, string serviceType, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetRoutesAsync(IEnumerable<string> lineIds, string serviceType, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(serviceType, true, out TfLServiceTypeEnum serviceTypeEnum))
             {
-                return GetRoutes(lineIds, serviceTypeEnum, cancellationToken);
+                return GetRoutesAsync(lineIds, serviceTypeEnum, cancellationToken);
             }
 
             throw new ArgumentException($"{nameof(serviceType)} must be a valid service type.");
@@ -124,7 +124,7 @@ namespace TfL.Apis
         /// <param name="serviceType">Service type enum</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">lineIds cannot be null or empty or contain null or empty line ids</exception>
-        public Task<TfLRoutes[]> GetRoutes(IEnumerable<string> lineIds, TfLServiceTypeEnum serviceType = default, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetRoutesAsync(IEnumerable<string> lineIds, TfLServiceTypeEnum serviceType = default, CancellationToken cancellationToken = default)
         {
             if (!lineIds.Any() || lineIds.Contains(null) || lineIds.Contains(string.Empty))
             {
@@ -151,7 +151,7 @@ namespace TfL.Apis
         /// <param name="lineId">Line id</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">lineId cannot be null or empty</exception>
-        public Task<TfLRoutes> GetMainRoute(string lineId, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes> GetMainRouteAsync(string lineId, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
             {
@@ -173,14 +173,14 @@ namespace TfL.Apis
         /// <param name="mode">Mode of transporation</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">mode cannot be null or empty</exception>
-        public Task<TfLDisruption[]> GetAllDisruptions(string mode, CancellationToken cancellationToken = default)
+        public Task<TfLDisruption[]> GetAllDisruptionsAsync(string mode, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(mode))
             {
                 throw new ArgumentNullException(nameof(mode));
             }
 
-            return GetAllDisruptions(new[] { mode }, cancellationToken);
+            return GetAllDisruptionsAsync(new[] { mode }, cancellationToken);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace TfL.Apis
         /// <param name="modes">Enumerable for modes of transporation</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">modes cannot be null or empty or contain null or empty modes</exception>
-        public Task<TfLDisruption[]> GetAllDisruptions(IEnumerable<string> modes, CancellationToken cancellationToken = default)
+        public Task<TfLDisruption[]> GetAllDisruptionsAsync(IEnumerable<string> modes, CancellationToken cancellationToken = default)
         {
             if (!modes.Any() || modes.Contains(null) || modes.Contains(string.Empty))
             {
@@ -213,14 +213,14 @@ namespace TfL.Apis
         /// <param name="lineId">Line id</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">lineId cannot be null or empty</exception>
-        public Task<TfLDisruption[]> GetDisruptions(string lineId, CancellationToken cancellationToken = default)
+        public Task<TfLDisruption[]> GetDisruptionsAsync(string lineId, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
             {
                 throw new ArgumentNullException(nameof(lineId));
             }
 
-            return GetDisruptions(new[] { lineId }, cancellationToken);
+            return GetDisruptionsAsync(new[] { lineId }, cancellationToken);
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace TfL.Apis
         /// <param name="lineIds">Line id enumerable</param>
         /// <param name="cancellationToken">Cancellation token, optional</param>
         /// <exception cref="ArgumentNullException">lineIds cannot be null or empty or contain null or empty line ids</exception>
-        public Task<TfLDisruption[]> GetDisruptions(IEnumerable<string> lineIds, CancellationToken cancellationToken = default)
+        public Task<TfLDisruption[]> GetDisruptionsAsync(IEnumerable<string> lineIds, CancellationToken cancellationToken = default)
         {
             if (!lineIds.Any() || lineIds.Contains(null) || lineIds.Contains(string.Empty))
             {
@@ -245,17 +245,17 @@ namespace TfL.Apis
 
         #region GetLineArrivals
 
-        public Task<TfLArrival[]> GetLineArrivals(string lineId, CancellationToken cancellationToken = default)
+        public Task<TfLArrival[]> GetLineArrivalsAsync(string lineId, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
             {
                 throw new ArgumentNullException(nameof(lineId));
             }
 
-            return GetLineArrivals(new[] { lineId }, cancellationToken);
+            return GetLineArrivalsAsync(new[] { lineId }, cancellationToken);
         }
 
-        public Task<TfLArrival[]> GetLineArrivals(IEnumerable<string> lineIds, CancellationToken cancellationToken = default)
+        public Task<TfLArrival[]> GetLineArrivalsAsync(IEnumerable<string> lineIds, CancellationToken cancellationToken = default)
         {
             if (!lineIds.Any() || lineIds.Contains(null) || lineIds.Contains(string.Empty))
             {
@@ -270,7 +270,7 @@ namespace TfL.Apis
 
         #region GetStopArrivals
 
-        public Task<TfLArrival[]> GetStopArrivals(string lineId, string stopPointId = null, string direction = null,
+        public Task<TfLArrival[]> GetStopArrivalsAsync(string lineId, string stopPointId = null, string direction = null,
             string destinationStationId = null, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
@@ -278,16 +278,16 @@ namespace TfL.Apis
                 throw new ArgumentNullException(nameof(lineId));
             }
 
-            return GetStopArrivals(new[] { lineId }, stopPointId, direction, destinationStationId, cancellationToken);
+            return GetStopArrivalsAsync(new[] { lineId }, stopPointId, direction, destinationStationId, cancellationToken);
         }
 
-        public Task<TfLArrival[]> GetStopArrivals(string lineId, string stopPointId = null, TfLDirectionEnum direction = default,
+        public Task<TfLArrival[]> GetStopArrivalsAsync(string lineId, string stopPointId = null, TfLDirectionEnum direction = default,
             string destinationStationId = null, CancellationToken cancellationToken = default)
         {
-            return GetStopArrivals(lineId, stopPointId, direction.ToString(), destinationStationId, cancellationToken);
+            return GetStopArrivalsAsync(lineId, stopPointId, direction.ToString(), destinationStationId, cancellationToken);
         }
 
-        public Task<TfLArrival[]> GetStopArrivals(IEnumerable<string> lineIds, string stopPointId = null, string direction = null,
+        public Task<TfLArrival[]> GetStopArrivalsAsync(IEnumerable<string> lineIds, string stopPointId = null, string direction = null,
             string destinationStationId = null, CancellationToken cancellationToken = default)
         {
             if (!lineIds.Any() || lineIds.Contains(null) || lineIds.Contains(string.Empty))
@@ -309,17 +309,17 @@ namespace TfL.Apis
             return GetAsync<TfLArrival[]>(path, query, cancellationToken);
         }
 
-        public Task<TfLArrival[]> GetStopArrivals(IEnumerable<string> lineIds, string stopPointId = null, TfLDirectionEnum direction = default,
+        public Task<TfLArrival[]> GetStopArrivalsAsync(IEnumerable<string> lineIds, string stopPointId = null, TfLDirectionEnum direction = default,
             string destinationStationId = null, CancellationToken cancellationToken = default)
         {
-            return GetStopArrivals(lineIds, stopPointId, direction.ToString(), destinationStationId, cancellationToken);
+            return GetStopArrivalsAsync(lineIds, stopPointId, direction.ToString(), destinationStationId, cancellationToken);
         }
 
         #endregion
 
         #region GetLineStations
 
-        public Task<TfLStopPoint[]> GetLineStations(string lineId, bool tflOnly = false, CancellationToken cancellationToken = default)
+        public Task<TfLStopPoint[]> GetLineStationsAsync(string lineId, bool tflOnly = false, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
             {
@@ -338,12 +338,12 @@ namespace TfL.Apis
 
         #region Meta
 
-        public Task<string[]> GetValidDisruptionCategories(CancellationToken cancellationToken = default)
+        public Task<string[]> GetValidDisruptionCategoriesAsync(CancellationToken cancellationToken = default)
         {
             return GetAsync<string[]>("Meta/DisruptionCategories", null, cancellationToken);
         }
 
-        public Task<TfLMode[]> GetValidModes(CancellationToken cancellationToken = default)
+        public Task<TfLMode[]> GetValidModesAsync(CancellationToken cancellationToken = default)
         {
             return GetAsync<TfLMode[]>("Meta/Modes", null, cancellationToken);
         }
@@ -352,12 +352,12 @@ namespace TfL.Apis
         /// Gets valid service types.
         /// Also represented by <see cref="TfLServiceTypeEnum"/>
         /// </summary>
-        public Task<string[]> GetValidServiceTypes(CancellationToken cancellationToken = default)
+        public Task<string[]> GetValidServiceTypesAsync(CancellationToken cancellationToken = default)
         {
             return GetAsync<string[]>("Meta/ServiceTypes", null, cancellationToken);
         }
 
-        public Task<TfLSeverityCode[]> GetValidSeverityCodes(CancellationToken cancellationToken = default)
+        public Task<TfLSeverityCode[]> GetValidSeverityCodesAsync(CancellationToken cancellationToken = default)
         {
             return GetAsync<TfLSeverityCode[]>("Meta/Severity", null, cancellationToken);
         }
@@ -366,37 +366,37 @@ namespace TfL.Apis
 
         #region GetRoutesByMode
 
-        public Task<TfLRoutes[]> GetRoutesByMode(string mode, string serviceType, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetRoutesByModeAsync(string mode, string serviceType, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(serviceType, true, out TfLServiceTypeEnum serviceTypeEnum))
             {
-                return GetRoutesByMode(mode, serviceTypeEnum, cancellationToken);
+                return GetRoutesByModeAsync(mode, serviceTypeEnum, cancellationToken);
             }
 
             throw new ArgumentException($"{nameof(serviceType)} must be a valid service type.");
         }
 
-        public Task<TfLRoutes[]> GetRoutesByMode(string mode, TfLServiceTypeEnum serviceType, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetRoutesByModeAsync(string mode, TfLServiceTypeEnum serviceType, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(mode))
             {
                 throw new ArgumentNullException(nameof(mode));
             }
 
-            return GetRoutesByMode(new[] { mode }, serviceType, cancellationToken);
+            return GetRoutesByModeAsync(new[] { mode }, serviceType, cancellationToken);
         }
 
-        public Task<TfLRoutes[]> GetRoutesByMode(IEnumerable<string> modes, string serviceType, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetRoutesByModeAsync(IEnumerable<string> modes, string serviceType, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(serviceType, true, out TfLServiceTypeEnum serviceTypeEnum))
             {
-                return GetRoutesByMode(modes, serviceTypeEnum, cancellationToken);
+                return GetRoutesByModeAsync(modes, serviceTypeEnum, cancellationToken);
             }
 
             throw new ArgumentException($"{nameof(serviceType)} must be a valid service type.");
         }
 
-        public Task<TfLRoutes[]> GetRoutesByMode(IEnumerable<string> modes, TfLServiceTypeEnum serviceType, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetRoutesByModeAsync(IEnumerable<string> modes, TfLServiceTypeEnum serviceType, CancellationToken cancellationToken = default)
         {
             if (!modes.Any() || modes.Contains(null) || modes.Contains(string.Empty))
             {
@@ -416,7 +416,7 @@ namespace TfL.Apis
 
         #region GetRoutesAndStops
 
-        public Task<TfLRoutesAndStops> GetRoutesAndStops(string lineId, string direction, string serviceType = null, bool excludeCrowding = false,
+        public Task<TfLRoutesAndStops> GetRoutesAndStopsAsync(string lineId, string direction, string serviceType = null, bool excludeCrowding = false,
             CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
@@ -440,7 +440,7 @@ namespace TfL.Apis
             return GetAsync<TfLRoutesAndStops>($"{lineId}/Route/Sequence/{direction}", query, cancellationToken);
         }
 
-        public Task<TfLRoutesAndStops> GetRoutesAndStops(string lineId, TfLDirectionEnum direction, string serviceType = null, bool excludeCrowding = false,
+        public Task<TfLRoutesAndStops> GetRoutesAndStopsAsync(string lineId, TfLDirectionEnum direction, string serviceType = null, bool excludeCrowding = false,
             CancellationToken cancellationToken = default)
         {
             if (direction == TfLDirectionEnum.All)
@@ -448,36 +448,36 @@ namespace TfL.Apis
                 throw new ArgumentException($"{nameof(direction)} cannot be TfLDirectionEnum.All for this method.");
             }
 
-            return GetRoutesAndStops(lineId, direction.ToString(), serviceType, excludeCrowding, cancellationToken);
+            return GetRoutesAndStopsAsync(lineId, direction.ToString(), serviceType, excludeCrowding, cancellationToken);
         }
 
-        public Task<TfLRoutesAndStops> GetRoutesAndStops(string lineId, string direction, TfLServiceTypeEnum serviceType = default, bool excludeCrowding = false,
+        public Task<TfLRoutesAndStops> GetRoutesAndStopsAsync(string lineId, string direction, TfLServiceTypeEnum serviceType = default, bool excludeCrowding = false,
             CancellationToken cancellationToken = default)
         {
-            return GetRoutesAndStops(lineId, direction, Utils.GetServiceTypeString(serviceType), excludeCrowding, cancellationToken);
+            return GetRoutesAndStopsAsync(lineId, direction, Utils.GetServiceTypeString(serviceType), excludeCrowding, cancellationToken);
         }
 
-        public Task<TfLRoutesAndStops> GetRoutesAndStops(string lineId, TfLDirectionEnum direction, TfLServiceTypeEnum serviceType = default,
+        public Task<TfLRoutesAndStops> GetRoutesAndStopsAsync(string lineId, TfLDirectionEnum direction, TfLServiceTypeEnum serviceType = default,
             bool excludeCrowding = false, CancellationToken cancellationToken = default)
         {
-            return GetRoutesAndStops(lineId, direction, Utils.GetServiceTypeString(serviceType), excludeCrowding, cancellationToken);
+            return GetRoutesAndStopsAsync(lineId, direction, Utils.GetServiceTypeString(serviceType), excludeCrowding, cancellationToken);
         }
 
         #endregion
 
         #region GetLines
 
-        public Task<TfLRoutes[]> GetLines(string lineId, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetLinesAsync(string lineId, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
             {
                 throw new ArgumentNullException(nameof(lineId));
             }
 
-            return GetLines(new[] { lineId }, cancellationToken);
+            return GetLinesAsync(new[] { lineId }, cancellationToken);
         }
 
-        public Task<TfLRoutes[]> GetLines(IEnumerable<string> lineIds, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetLinesAsync(IEnumerable<string> lineIds, CancellationToken cancellationToken = default)
         {
             if (!lineIds.Any() || lineIds.Contains(null) || lineIds.Contains(string.Empty))
             {
@@ -491,17 +491,17 @@ namespace TfL.Apis
 
         #region GetLinesByMode
 
-        public Task<TfLRoutes[]> GetLinesByMode(string mode, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetLinesByModeAsync(string mode, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(mode))
             {
                 throw new ArgumentNullException(nameof(mode));
             }
 
-            return GetLinesByMode(new[] { mode }, cancellationToken);
+            return GetLinesByModeAsync(new[] { mode }, cancellationToken);
         }
 
-        public Task<TfLRoutes[]> GetLinesByMode(IEnumerable<string> modes, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetLinesByModeAsync(IEnumerable<string> modes, CancellationToken cancellationToken = default)
         {
             if (!modes.Any() || modes.Contains(null) || modes.Contains(string.Empty))
             {
@@ -516,7 +516,7 @@ namespace TfL.Apis
 
         #region GetLineStatusesBySeverity
 
-        public Task<TfLRoutes[]> GetLineStatusesBySeverity(int severity, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetLineStatusesBySeverityAsync(int severity, CancellationToken cancellationToken = default)
         {
             if (severity < 0 || severity > 14)
             {
@@ -530,7 +530,7 @@ namespace TfL.Apis
 
         #region GetLineStatusesByTimePeriod
 
-        public Task<TfLRoutes[]> GetLineStatusesByTimePeriod(string lineId, DateTime startDate, DateTime endDate, bool detail = false,
+        public Task<TfLRoutes[]> GetLineStatusesByTimePeriodAsync(string lineId, DateTime startDate, DateTime endDate, bool detail = false,
             CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
@@ -538,10 +538,10 @@ namespace TfL.Apis
                 throw new ArgumentNullException(nameof(lineId));
             }
 
-            return GetLineStatusesByTimePeriod(new[] { lineId }, startDate, endDate, detail, cancellationToken);
+            return GetLineStatusesByTimePeriodAsync(new[] { lineId }, startDate, endDate, detail, cancellationToken);
         }
 
-        public Task<TfLRoutes[]> GetLineStatusesByTimePeriod(IEnumerable<string> lineIds, DateTime startDate, DateTime endDate, bool detail = false,
+        public Task<TfLRoutes[]> GetLineStatusesByTimePeriodAsync(IEnumerable<string> lineIds, DateTime startDate, DateTime endDate, bool detail = false,
             CancellationToken cancellationToken = default)
         {
             if (!lineIds.Any() || lineIds.Contains(null) || lineIds.Contains(string.Empty))
@@ -570,17 +570,17 @@ namespace TfL.Apis
 
         #region GetLineStatusesByMode
 
-        public Task<TfLRoutes[]> GetLineStatusesByMode(string mode, bool detail = false, string severityLevel = null, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetLineStatusesByModeAsync(string mode, bool detail = false, string severityLevel = null, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(mode))
             {
                 throw new ArgumentNullException(nameof(mode));
             }
 
-            return GetLineStatusesByMode(new[] { mode }, detail, severityLevel, cancellationToken);
+            return GetLineStatusesByModeAsync(new[] { mode }, detail, severityLevel, cancellationToken);
         }
 
-        public Task<TfLRoutes[]> GetLineStatusesByMode(IEnumerable<string> modes, bool detail = false, string severityLevel = null,
+        public Task<TfLRoutes[]> GetLineStatusesByModeAsync(IEnumerable<string> modes, bool detail = false, string severityLevel = null,
             CancellationToken cancellationToken = default)
         {
             if (!modes.Any() || modes.Contains(null) || modes.Contains(string.Empty))
@@ -605,17 +605,17 @@ namespace TfL.Apis
 
         #region GetLineStatuses
 
-        public Task<TfLRoutes[]> GetLineStatuses(string lineId, bool detail = false, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetLineStatusesAsync(string lineId, bool detail = false, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
             {
                 throw new ArgumentNullException(nameof(lineId));
             }
 
-            return GetLineStatuses(new[] { lineId }, detail, cancellationToken);
+            return GetLineStatusesAsync(new[] { lineId }, detail, cancellationToken);
         }
 
-        public Task<TfLRoutes[]> GetLineStatuses(IEnumerable<string> lineIds, bool detail = false, CancellationToken cancellationToken = default)
+        public Task<TfLRoutes[]> GetLineStatusesAsync(IEnumerable<string> lineIds, bool detail = false, CancellationToken cancellationToken = default)
         {
             if (!lineIds.Any() || lineIds.Contains(null) || lineIds.Contains(string.Empty))
             {
@@ -635,7 +635,7 @@ namespace TfL.Apis
 
         #region GetTimetableByStation
 
-        public Task<TfLStationTimetable> GetTimetableByStation(string lineId, string fromStopPointId, string toStopPointId = null,
+        public Task<TfLStationTimetable> GetTimetableByStationAsync(string lineId, string fromStopPointId, string toStopPointId = null,
             CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(lineId))
@@ -660,7 +660,7 @@ namespace TfL.Apis
 
         #region Search
 
-        public Task<TfLSearchResult> Search(string search, IEnumerable<string> modes = null, string serviceType = null, CancellationToken cancellationToken = default)
+        public Task<TfLSearchResult> SearchAsync(string search, IEnumerable<string> modes = null, string serviceType = null, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(search))
             {
@@ -680,7 +680,7 @@ namespace TfL.Apis
             return GetAsync<TfLSearchResult>($"Search/{search}", query, cancellationToken);
         }
 
-        public Task<TfLSearchResult> Search(string search, IEnumerable<string> modes = null, TfLServiceTypeEnum serviceType = default,
+        public Task<TfLSearchResult> SearchAsync(string search, IEnumerable<string> modes = null, TfLServiceTypeEnum serviceType = default,
             CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(search))
@@ -688,7 +688,7 @@ namespace TfL.Apis
                 throw new ArgumentNullException(nameof(search));
             }
 
-            return Search(search, modes, Utils.GetServiceTypeString(serviceType), cancellationToken);
+            return SearchAsync(search, modes, Utils.GetServiceTypeString(serviceType), cancellationToken);
         }
 
         #endregion

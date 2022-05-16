@@ -26,7 +26,7 @@ namespace TfL.Apis
 
         #region GetDayOfWeekCrowding
         
-        public Task<object> GetDayOfWeekCrowding(string naptanCode, DayOfWeek dayOfWeek, CancellationToken cancellationToken = default)
+        public Task<object> GetDayOfWeekCrowdingAsync(string naptanCode, DayOfWeek dayOfWeek, CancellationToken cancellationToken = default)
         {
             CheckAuthorization();
 
@@ -39,11 +39,11 @@ namespace TfL.Apis
             return GetAsync<object>(path, null, cancellationToken);
         }
 
-        public Task<object> GetDayOfWeekCrowding(string naptanCode, string dayOfWeek, CancellationToken cancellationToken = default)
+        public Task<object> GetDayOfWeekCrowdingAsync(string naptanCode, string dayOfWeek, CancellationToken cancellationToken = default)
         {
             if (Enum.TryParse(dayOfWeek, true, out DayOfWeek day))
             {
-                return GetDayOfWeekCrowding(naptanCode, day, cancellationToken);
+                return GetDayOfWeekCrowdingAsync(naptanCode, day, cancellationToken);
             }
 
             throw new ArgumentException($"{nameof(dayOfWeek)} must be a valid day of the week.");
@@ -53,7 +53,7 @@ namespace TfL.Apis
 
         #region GetLiveCrowding
         
-        public Task<object> GetLiveCrowding(string naptanCode, CancellationToken cancellationToken = default)
+        public Task<object> GetLiveCrowdingAsync(string naptanCode, CancellationToken cancellationToken = default)
         {
             CheckAuthorization();
 
@@ -69,7 +69,7 @@ namespace TfL.Apis
 
         #region GetCrowding
 
-        public Task<object> GetCrowding(string naptanCode, CancellationToken cancellationToken = default)
+        public Task<object> GetCrowdingAsync(string naptanCode, CancellationToken cancellationToken = default)
         {
             CheckAuthorization();
 

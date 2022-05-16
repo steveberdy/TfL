@@ -28,12 +28,12 @@ namespace TfL.Tests
 
             await Assert.ThrowsAsync<UnauthorizedAccessException>(async () =>
             {
-                await client.Crowding.GetDayOfWeekCrowding("940GZZLUBLR", DayOfWeek.Tuesday);
+                await client.Crowding.GetDayOfWeekCrowdingAsync("940GZZLUBLR", DayOfWeek.Tuesday);
             });
 
             await Assert.ThrowsAsync<UnauthorizedAccessException>(async () =>
             {
-                await client.Crowding.GetDayOfWeekCrowding("940GZZLUBLR", "Tuesday");
+                await client.Crowding.GetDayOfWeekCrowdingAsync("940GZZLUBLR", "Tuesday");
             });
         }
         #endregion
@@ -56,7 +56,7 @@ namespace TfL.Tests
 
             await Assert.ThrowsAsync<UnauthorizedAccessException>(async () =>
             {
-                await client.Crowding.GetLiveCrowding("940GZZLUBLR");
+                await client.Crowding.GetLiveCrowdingAsync("940GZZLUBLR");
             });
         }
         #endregion
@@ -79,7 +79,7 @@ namespace TfL.Tests
 
             await Assert.ThrowsAsync<UnauthorizedAccessException>(async () =>
             {
-                await client.Crowding.GetCrowding("940GZZLUBLR");
+                await client.Crowding.GetCrowdingAsync("940GZZLUBLR");
             });
         }
         #endregion

@@ -9,7 +9,7 @@ namespace TfL.Tests
         [Fact]
         public async void Test_GetAirQuality()
         {
-            var res = await client.AirQuality.GetAirQuality();
+            var res = await client.AirQuality.GetAirQualityAsync();
             Assert.NotNull(res);
         }
     }
