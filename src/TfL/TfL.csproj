@@ -7,8 +7,9 @@
     <Authors>Steve Berdy</Authors>
     <Description>A C# .NET wrapper for the Transport for London API</Description>
     <PackageProjectUrl>https://github.com/steveberdy/TfL</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/steveberdy/TfL/main/icon.png</PackageIconUrl>
-    <PackageReadmeFile>../../README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Icon>https://raw.githubusercontent.com/steveberdy/TfL/main/icon.png</Icon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>api;wrapper;rest api;transport;tfl;london;tfl api</PackageTags>
     <RepositoryUrl>https://github.com/steveberdy/TfL.git</RepositoryUrl>
 
@@ -20,6 +21,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\"/>
+
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
