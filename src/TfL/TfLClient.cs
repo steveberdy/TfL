@@ -63,15 +63,20 @@ namespace TfL
         {
             uriPath += Utils.CreateQuery(query);
 
-            var response = await client.GetAsync(uriPath, HttpCompletionOption.ResponseContentRead, cancellationToken).ConfigureAwait(false);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                using var jtr = new JsonTextReader(
-                    new StreamReader(await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false)))
-                { CloseInput = true };
-                return serializer.Deserialize<TResult>(jtr);
+                var response = await client.GetAsync(uriPath, HttpCompletionOption.ResponseContentRead, cancellationToken).ConfigureAwait(false);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    using var jtr = new JsonTextReader(
+                        new StreamReader(await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false)))
+                    { CloseInput = true };
+                    return serializer.Deserialize<TResult>(jtr);
+                }
             }
+            catch { }
+
 
             // If it's not a success, return default instead of throwing an error
             return default;
