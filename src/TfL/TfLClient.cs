@@ -77,7 +77,6 @@ namespace TfL
             }
             catch { }
 
-
             // If it's not a success, return default instead of throwing an error
             return default;
         }
